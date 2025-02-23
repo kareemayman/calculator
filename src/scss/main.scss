@@ -1,4 +1,71 @@
 @use "variables";
 @use "globals";
-@use "mixins";
+@use "mixins" as *;
 
+body {
+  min-height: 100dvh;
+  @include flex-center;
+  background-color: var(--theme1-main-bg);
+}
+
+.calculator {
+  border: 1px solid white;
+  margin: 30px;
+
+  @media (min-width: 769px) {
+    width: 600px;
+  }
+}
+
+header {
+    @include flex-space-between;
+    color: white;
+    padding: 30px 0;
+
+    .theme-selector {
+        @include flex-space-between;
+        gap: 30px;
+
+        p {
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .theme-toggle {
+            .theme-numbers {
+                width: 70px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                font-weight: 500;
+            }
+
+            .theme-slider {
+                position: relative;
+                width: 70px;
+                height: 25px;
+                background-color: var(--theme1-toggle-bg);
+                margin: 5px 0;
+                border-radius: 30px;
+
+                .toggle-button {
+                    position: absolute;
+                    height: 60%;
+                    aspect-ratio: 1;
+                    background-color: var(--theme1-key-bg-red);
+                    border-radius: 50%;
+                    left: 5px;
+                    top: 50%;
+                    translate: 0 -50%;
+                    transition: var(--main-trans);
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--theme1-key-shadow-red);
+                    }
+                }
+            }
+        }
+    }
+}
