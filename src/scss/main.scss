@@ -13,7 +13,7 @@ body {
   width: calc(100vw - 50px);
 
   @media (min-width: 769px) {
-    width: 600px;
+    width: 550px;
   }
 }
 
@@ -68,6 +68,10 @@ header {
             }
         }
     }
+
+    @media (max-width: 769px) {
+        padding-top: 0;
+    }
 }
 
 .screen {
@@ -81,5 +85,72 @@ header {
     @media (max-width: 768px) {
         font-size: 2rem;
         padding: 30px 25px;
+    }
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 30px;
+    margin-top: 20px;
+    width: 100%;
+    background-color: var(--theme1-toggle-bg);
+    border-radius: 12px;
+
+    .button {
+        @include flex-center;
+        border-radius: 12px;
+        background-color: var(--theme1-key-bg-light-orange);
+        color: var(--theme1-text-dark-grayish-blue);
+        padding: 15px 0;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: var(--main-trans);
+        box-shadow: inset 0px -3px 0px 1px var(--theme1-key-shadow-orange);
+        
+        &::selection {
+            display: none;
+        }
+
+        &:active {
+            scale: 0.9;
+        }
+
+        &.special-button {
+            color: white;
+            background-color: var(--theme1-key-bg);
+            font-size: 1.8rem;
+            box-shadow: inset 0px -3px 0px 1px var(--theme1-key-shadow);
+        }
+
+        &.equal-button {
+            font-size: 1.8rem;
+            background-color: var(--theme1-key-bg-red);
+            color: white;
+            grid-column: span 2;
+            padding: 20px 0;
+            box-shadow: inset 0px -3px 0px 1px var(--theme1-key-shadow-red);
+        }
+
+        &:nth-last-of-type(2) {
+            grid-column: span 2;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 769px) {
+            border-radius: 6px;
+            font-size: 2rem;
+
+            &.special-button,
+            &.equal-button {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    @media (max-width: 769px) {
+        gap: 15px;
+        padding: 20px;
     }
 }
