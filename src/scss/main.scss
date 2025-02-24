@@ -9,8 +9,8 @@ body {
 }
 
 .calculator {
-  border: 1px solid white;
-  margin: 30px;
+//   border: 1px solid white;
+  width: calc(100vw - 50px);
 
   @media (min-width: 769px) {
     width: 600px;
@@ -67,5 +67,19 @@ header {
                 }
             }
         }
+    }
+}
+
+.screen {
+    color: white;
+    background-color: var(--theme1-screen-bg);
+    padding: 40px;
+    border-radius: 12px;
+    direction: rtl;
+    font-size: 3.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 2rem;
+        padding: 30px 25px;
     }
 }
