@@ -81,10 +81,12 @@ header {
     border-radius: 12px;
     direction: rtl;
     font-size: 3.5rem;
+    min-height: 131px;
 
     @media (max-width: 768px) {
         font-size: 2rem;
         padding: 30px 25px;
+        min-height: 89px;
     }
 }
 

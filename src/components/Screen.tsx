@@ -1,8 +1,12 @@
+import { useContext } from "react"
+import { CalculatorContext } from "../context/CalculatorContext"
 
 export default function Screen() {
+  const {value, setValue} = useContext(CalculatorContext)
+
   return (
     <h1 className="screen">
-        399,981
+        {value}
     </h1>
   ) 
 }
