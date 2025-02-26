@@ -2,11 +2,11 @@ import { useContext } from "react"
 import { CalculatorContext } from "../context/CalculatorContext"
 
 export default function Screen() {
-  const {value, setValue} = useContext(CalculatorContext)
+  const {screenValue, setScreenValue} = useContext(CalculatorContext)
 
   return (
     <h1 className="screen">
-        {value}
+        {screenValue}
     </h1>
   ) 
 }
