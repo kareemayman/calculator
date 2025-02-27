@@ -3,7 +3,12 @@ import Button from "./Button"
 import { CalculatorContext } from "../context/CalculatorContext"
 
 export default function ButtonGrid() {
-  const { screenValue, setScreenValue } = useContext(CalculatorContext)
+  const {
+    screenValue,
+    setScreenValue,
+    toBeCalculatedString,
+    setToBeCalculatedString,
+  } = useContext(CalculatorContext)
   const screenValueRef = useRef<string>(screenValue)
   const [ numbers, setNumbers ] = useState<number[]>([])
   const numbersRef = useRef<number[]>(numbers)
@@ -53,11 +58,14 @@ export default function ButtonGrid() {
           setScreenValue((prevValue) => prevValue.slice(0, -1))
         } else if ((e.target as HTMLElement).innerText === "RESET") {
           setScreenValue("")
+          setToBeCalculatedString("")
         } else if ((e.target as HTMLElement).classList.contains("operator-button") && screenValueRef.current.trim() !== '') {
+          setToBeCalculatedString(screenValueRef.current + " " + (e.target as HTMLElement).innerText)
           setNumbers((prevNumbers) => [...prevNumbers, parseFloat(screenValueRef.current)])
           setOperators((prevOperators) => [...prevOperators, (e.target as HTMLElement).innerText])
           setScreenValue("")
         } else if ((e.target as HTMLElement).innerText === "=") {
+          setToBeCalculatedString(prevValue => prevValue + " " + screenValueRef.current + " =")
           calculate([...numbersRef.current, parseFloat(screenValueRef.current)], operatorsRef.current)
           setNumbers([])
           setOperators([])

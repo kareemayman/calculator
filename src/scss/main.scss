@@ -82,6 +82,18 @@ header {
     direction: rtl;
     font-size: 3.5rem;
     min-height: 131px;
+    position: relative;
+
+    span.to-be-calculated {
+        position: absolute;
+        color: hsla(0, 0%, 100%, 0.534);
+        font-size: 1.5rem;
+        direction: ltr;
+        top: 15px;
+        left: 15px;
+        font-weight: 300;
+        letter-spacing: -1px;
+    }
 
     @media (max-width: 768px) {
         font-size: 2rem;
