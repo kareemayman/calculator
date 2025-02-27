@@ -10,6 +10,7 @@ export default function ButtonGrid() {
   const [ operators, setOperators ] = useState<string[]>([])
   const operatorsRef = useRef<string[]>(operators)
   const [ result, setResult ] = useState<number | null>(null)
+  const resultRef = useRef<number | null>(result)
 
   useEffect(() => {
     screenValueRef.current = screenValue
@@ -24,9 +25,17 @@ export default function ButtonGrid() {
   }, [operators])
 
   useEffect(() => {
+    resultRef.current = result
+  }, [result])
+
+  useEffect(() => {
     function handleBUttonClick(e: MouseEvent) {
       if (e.target && (e.target as HTMLElement).matches(".button")) {
         if ((e.target as HTMLElement).classList.contains("number-button")) {
+          if (resultRef.current !== null) {
+            setResult(null)
+            setScreenValue("")
+          }
           if ((e.target as HTMLElement).innerText !== ".") {
             setScreenValue(
               (prevValue) => prevValue + (e.target as HTMLElement).innerText
