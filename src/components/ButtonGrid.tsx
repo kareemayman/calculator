@@ -59,6 +59,8 @@ export default function ButtonGrid() {
         } else if ((e.target as HTMLElement).innerText === "RESET") {
           setScreenValue("")
           setToBeCalculatedString("")
+        } else if ((e.target as HTMLElement).innerText === "-" && screenValueRef.current.trim() === '') {
+          setScreenValue("-")
         } else if ((e.target as HTMLElement).classList.contains("operator-button") && screenValueRef.current.trim() !== '') {
           setToBeCalculatedString(screenValueRef.current + " " + (e.target as HTMLElement).innerText)
           setNumbers((prevNumbers) => [...prevNumbers, parseFloat(screenValueRef.current)])
