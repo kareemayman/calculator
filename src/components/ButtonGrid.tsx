@@ -83,7 +83,6 @@ export default function ButtonGrid() {
   }, [])
 
   function calculate(nums: number[], ops: string[]) {
-    console.log(nums, ops)
     let res = nums[0]
     let j = 0
     for (let i = 1; i < nums.length; i++) {
@@ -102,6 +101,7 @@ export default function ButtonGrid() {
       }
       j++
     }
+    res = parseFloat(res.toFixed(3))
     setResult(res)
     setScreenValue(res.toString())
   }
