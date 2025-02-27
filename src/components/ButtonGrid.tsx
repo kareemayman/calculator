@@ -1,9 +1,27 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import Button from "./Button"
 import { CalculatorContext } from "../context/CalculatorContext"
 
 export default function ButtonGrid() {
   const { screenValue, setScreenValue } = useContext(CalculatorContext)
+  const screenValueRef = useRef<string>(screenValue)
+  const [ numbers, setNumbers ] = useState<number[]>([])
+  const numbersRef = useRef<number[]>(numbers)
+  const [ operators, setOperators ] = useState<string[]>([])
+  const operatorsRef = useRef<string[]>(operators)
+  const [ result, setResult ] = useState<number | null>(null)
+
+  useEffect(() => {
+    screenValueRef.current = screenValue
+  }, [screenValue])
+
+  useEffect(() => {
+    numbersRef.current = numbers
+  }, [numbers])
+
+  useEffect(() => {
+    operatorsRef.current = operators
+  }, [operators])
 
   useEffect(() => {
     function handleBUttonClick(e: MouseEvent) {
@@ -26,6 +44,14 @@ export default function ButtonGrid() {
           setScreenValue((prevValue) => prevValue.slice(0, -1))
         } else if ((e.target as HTMLElement).innerText === "RESET") {
           setScreenValue("")
+        } else if ((e.target as HTMLElement).classList.contains("operator-button") && screenValueRef.current.trim() !== '') {
+          setNumbers((prevNumbers) => [...prevNumbers, parseFloat(screenValueRef.current)])
+          setOperators((prevOperators) => [...prevOperators, (e.target as HTMLElement).innerText])
+          setScreenValue("")
+        } else if ((e.target as HTMLElement).innerText === "=") {
+          calculate([...numbersRef.current, parseFloat(screenValueRef.current)], operatorsRef.current)
+          setNumbers([])
+          setOperators([])
         }
       }
     }
@@ -36,6 +62,30 @@ export default function ButtonGrid() {
       document.removeEventListener("click", handleBUttonClick)
     }
   }, [])
+
+  function calculate(nums: number[], ops: string[]) {
+    console.log(nums, ops)
+    let res = nums[0]
+    let j = 0
+    for (let i = 1; i < nums.length; i++) {
+      switch (ops[j]) {
+        case "+":
+          res += nums[i]
+          break
+        case "-":
+          res -= nums[i]
+          break
+        case "x":
+          res *= nums[i]
+          break
+        default:
+          res /= nums[i]
+      }
+      j++
+    }
+    setResult(res)
+    setScreenValue(res.toString())
+  }
 
   return (
     <div className="button-grid">
