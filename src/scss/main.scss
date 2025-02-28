@@ -6,6 +6,14 @@ body {
   min-height: 100dvh;
   @include flex-center;
   background-color: var(--theme1-main-bg);
+
+  &.theme-2 {
+    background-color: var(--theme2-main-bg);
+  }
+
+  &.theme-3 {
+    background-color: var(--theme3-main-bg);
+  }
 }
 
 .calculator {
@@ -179,5 +187,55 @@ header {
     @media (max-width: 769px) {
         gap: 15px;
         padding: 20px;
+    }
+}
+
+// Theme 2 Styles
+body.theme-2 {
+    header {
+        color: var(--theme2-text-dark-grayish-yellow) !important;
+
+        .theme-slider {
+            background-color: var(--theme2-toggle-bg) !important;
+
+            .toggle-button {
+                background-color: var(--theme2-key-bg-orange) !important;
+
+                &:hover {
+                    background-color: var(--theme2-key-shadow-orange) !important;
+                }
+            }
+        }
+    }
+
+    .screen {
+        background-color: var(--theme2-screen-bg) !important;
+        color: var(--theme2-text-dark-grayish-yellow) !important;
+
+        span.to-be-calculated {
+            color: hsla(60, 9%, 19%, 0.63) !important;
+        }
+    }
+
+    .button-grid {
+        background-color: var(--theme2-toggle-bg) !important;
+
+        .button {
+            background-color: var(--theme2-key-bg-light-yellow) !important;
+            color: var(--theme2-text-dark-grayish-yellow) !important;
+            box-shadow: inset 0px -3px 0px 1px var(--theme2-key-shadow-dark-orange) !important;
+
+            &.special-button {
+                color: white !important;
+                background-color: var(--theme2-key-bg) !important;
+                box-shadow: inset 0px -3px 0px 1px var(--theme2-key-shadow) !important;
+            }
+
+            &.equal-button {
+                color: white !important;
+                background-color: var(--theme2-key-bg-orange) !important;
+                box-shadow: inset 0px -3px 0px 1px var(--theme2-key-shadow-orange) !important;
+            }
+        }
     }
 }

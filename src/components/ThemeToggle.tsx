@@ -1,8 +1,12 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { CalculatorContext } from "../context/CalculatorContext"
 
 export default function ThemeToggle() {
   const {theme, setTheme} = useContext(CalculatorContext)
+
+  useEffect(() => {
+    document.body.className = `theme-${theme}`
+  }, [theme])
 
   function handleToggleButtonClick() {
     if (theme === 1) {
@@ -12,7 +16,7 @@ export default function ThemeToggle() {
     } else {
       setTheme(1)
     }
-  }  
+  }
 
   return (
     <div className="theme-toggle">
