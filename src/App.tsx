@@ -1,15 +1,13 @@
-import { useContext } from "react"
 import ButtonGrid from "./components/ButtonGrid"
 import Header from "./components/Header"
 import Screen from "./components/Screen"
-import { CalculatorContext, CalculatorProvider } from "./context/CalculatorContext"
+import { CalculatorProvider } from "./context/CalculatorContext"
 
 export default function App() {
-  const { theme } = useContext(CalculatorContext)
 
   return (
     <CalculatorProvider>
-      <div className={`calculator theme-${theme}`}>
+      <div className='calculator'>
         <Header></Header>
         <Screen></Screen>
         <ButtonGrid></ButtonGrid>

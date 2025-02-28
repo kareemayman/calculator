@@ -1,8 +1,7 @@
-import { useContext, useEffect } from "react"
-import { CalculatorContext } from "../context/CalculatorContext"
+import { useEffect, useState } from "react"
 
 export default function ThemeToggle() {
-  const {theme, setTheme} = useContext(CalculatorContext)
+  const [ theme, setTheme ] = useState<number | null>(1)
 
   useEffect(() => {
     document.body.className = `theme-${theme}`
