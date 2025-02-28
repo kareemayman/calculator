@@ -239,3 +239,53 @@ body.theme-2 {
         }
     }
 }
+
+// Theme 3 Styles
+body.theme-3 {
+    header {
+        color: var(--theme3-text-light-yellow) !important;
+
+        .theme-slider {
+            background-color: var(--theme3-toggle-bg) !important;
+
+            .toggle-button {
+                background-color: var(--theme3-key-bg-cyan) !important;
+
+                &:hover {
+                    background-color: var(--theme3-key-shadow-soft-cyan) !important;
+                }
+            }
+        }
+    }
+
+    .screen {
+        background-color: var(--theme3-toggle-bg) !important;
+        color: var(--theme3-text-light-yellow) !important;
+
+        span.to-be-calculated {
+            color: hsla(52, 100%, 62%, 0.493) !important;
+        }
+    }
+
+    .button-grid {
+        background-color: var(--theme3-toggle-bg) !important;
+
+        .button {
+            background-color: var(--theme3-key-bg-dark-violet) !important;
+            color: var(--theme3-text-light-yellow) !important;
+            box-shadow: inset 0px -3px 0px 1px var(--theme3-key-shadow-dark-magenta) !important;
+
+            &.special-button {
+                color: white !important;
+                background-color: var(--theme3-key-bg) !important;
+                box-shadow: inset 0px -3px 0px 1px var(--theme3-key-shadow-magenta) !important;
+            }
+
+            &.equal-button {
+                color: black !important;
+                background-color: var(--theme3-key-bg-cyan) !important;
+                box-shadow: inset 0px -3px 0px 1px var(--theme3-key-shadow-soft-cyan) !important;
+            }
+        }
+    }
+}
