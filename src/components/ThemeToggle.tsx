@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 
 export default function ThemeToggle() {
-  const [ theme, setTheme ] = useState<number | null>(1)
+  const [ theme, setTheme ] = useState<number>(() => {
+    const storedTheme = localStorage.getItem('calculatorTheme')
+    return storedTheme ? parseInt(storedTheme) : 1
+  })
 
   useEffect(() => {
     document.body.className = `theme-${theme}`
@@ -10,10 +13,13 @@ export default function ThemeToggle() {
   function handleToggleButtonClick() {
     if (theme === 1) {
       setTheme(2)
+      localStorage.setItem('calculatorTheme', '2')
     } else if (theme === 2) {
       setTheme(3)
+      localStorage.setItem('calculatorTheme', '3')
     } else {
       setTheme(1)
+      localStorage.setItem('calculatorTheme', '1')
     }
   }
 
