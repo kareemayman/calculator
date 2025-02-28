@@ -64,6 +64,16 @@ header {
                     &:hover {
                         background-color: var(--theme1-key-shadow-red);
                     }
+
+                    &.theme-2 {
+                        left: 50%;
+                        transform: translateX(-50%);
+                    }
+
+                    &.theme-3 {
+                        left: initial;
+                        right: 5px;
+                    }
                 }
             }
         }
