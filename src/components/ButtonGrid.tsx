@@ -6,7 +6,6 @@ export default function ButtonGrid() {
   const {
     screenValue,
     setScreenValue,
-    toBeCalculatedString,
     setToBeCalculatedString,
   } = useContext(CalculatorContext)
   const screenValueRef = useRef<string>(screenValue)
@@ -62,7 +61,8 @@ export default function ButtonGrid() {
         } else if ((e.target as HTMLElement).innerText === "-" && screenValueRef.current.trim() === '') {
           setScreenValue("-")
         } else if ((e.target as HTMLElement).classList.contains("operator-button") && screenValueRef.current.trim() !== '') {
-          setToBeCalculatedString(screenValueRef.current + " " + (e.target as HTMLElement).innerText)
+          if (numbersRef.current.length === 0) {setToBeCalculatedString(screenValueRef.current + " " + (e.target as HTMLElement).innerText)}
+          else setToBeCalculatedString(prevValue => prevValue + " " + (screenValueRef.current + " " + (e.target as HTMLElement).innerText))
           setNumbers((prevNumbers) => [...prevNumbers, parseFloat(screenValueRef.current)])
           setOperators((prevOperators) => [...prevOperators, (e.target as HTMLElement).innerText])
           setScreenValue("")
