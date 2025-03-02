@@ -66,7 +66,7 @@ export default function ButtonGrid() {
           setNumbers((prevNumbers) => [...prevNumbers, parseFloat(screenValueRef.current)])
           setOperators((prevOperators) => [...prevOperators, (e.target as HTMLElement).innerText])
           setScreenValue("")
-        } else if ((e.target as HTMLElement).innerText === "=") {
+        } else if ((e.target as HTMLElement).innerText === "=" && numbersRef.current.length > 0) {
           setToBeCalculatedString(prevValue => prevValue + " " + screenValueRef.current + " =")
           calculate([...numbersRef.current, parseFloat(screenValueRef.current)], operatorsRef.current)
           setNumbers([])
@@ -83,6 +83,7 @@ export default function ButtonGrid() {
   }, [])
 
   function calculate(nums: number[], ops: string[]) {
+    console.log(`nums: ${nums}, ops: ${ops}`)
     let res = nums[0]
     let j = 0
     for (let i = 1; i < nums.length; i++) {
