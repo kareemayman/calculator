@@ -71,6 +71,7 @@ export default function ButtonGrid() {
           calculate([...numbersRef.current, parseFloat(screenValueRef.current)], operatorsRef.current)
           setNumbers([])
           setOperators([])
+          setResult(null)
         }
       }
     }
@@ -83,7 +84,6 @@ export default function ButtonGrid() {
   }, [])
 
   function calculate(nums: number[], ops: string[]) {
-    console.log(`nums: ${nums}, ops: ${ops}`)
     let res = nums[0]
     let j = 0
     for (let i = 1; i < nums.length; i++) {
